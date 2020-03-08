@@ -15,6 +15,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     def save(self, **kwargs):
         instance = super().save(**kwargs)
-        if self.validate_data.get("password"):
+        if self.validated_data.get("password"):
             instance.set_password(self.validated_data['password'])
         return instance
